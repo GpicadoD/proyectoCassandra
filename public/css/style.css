@@ -1,0 +1,8 @@
+.pagina-main-fondo {
+    background-image: url("/images/fondo.jpg");
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
+    height: auto;
+    padding: 10%;
+}
