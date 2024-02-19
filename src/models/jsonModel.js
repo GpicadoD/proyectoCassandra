@@ -25,12 +25,38 @@ async function insertarJson(nombre, contenido) {
     }
 }
 
+async function insertarArchivo(nombre, contenido) {
+    try {
+        const query = 'INSERT INTO files (nombre, contenido) VALUES (?, ?)';
+        await client.execute(query, [nombre, contenido]);
+        console.log('Archivo JSON insertado correctamente.');
+    } catch (error) {
+        console.error('Error al insertar el archivo JSON:', error);
+    }
+}
+
+async function obtenerTodoJson() {
+    const query = 'SELECT nombre, contenido FROM files';
+    try {
+        const result = await client.execute(query);
+        if (result.rows.length > 0) {
+            return result;
+        } else {
+            console.log('No se encontró ningún archivo JSON.');
+            return null;
+        }
+    } catch (error) {
+        console.error('Error al obtener el archivo JSON:', error);
+        return null;
+    }
+}
+
 async function obtenerJson(nombre) {
-    const query = 'SELECT contenido FROM files WHERE nombre = ?';
+    const query = 'SELECT nombre, contenido FROM files WHERE nombre = ?';
     try {
         const result = await client.execute(query, [nombre]);
         if (result.rows.length > 0) {
-            return result.rows[0].contenido;
+            return result.rows[0];
         } else {
             console.log('No se encontró ningún archivo JSON con ese nombre.');
             return null;
@@ -61,4 +87,4 @@ async function eliminarJson(nombre) {
     }
 }
 
-export { conectarCassandra, insertarJson, obtenerJson, actualizarJson, eliminarJson };
+export { conectarCassandra, insertarJson, obtenerJson, actualizarJson, eliminarJson, obtenerTodoJson, insertarArchivo };
