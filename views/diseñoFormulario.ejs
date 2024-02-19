@@ -28,139 +28,30 @@
         </ul>
     </div>
 </nav>
-<div class="container fondoForm  p-3 my-5">
-    <!-- Subir Json -->
-    <form id="formSubidaJson" enctype="multipart/form-data" class="my-4">
-        <div class="form-group">
-            <div class="custom-file">
-                <input type="file" name="archivoJson" accept=".json" class="custom-file-input"
-                       id="archivoJson">
-                <label class="custom-file-label" for="archivoJson">Elegir archivo...</label>
+<div class="container p-3 my-5">
+    <div class="container fondoFormInsertar p-5 my-5">
+        <h2>Subir Archivo JSON</h2>
+        <form id="formSubidaJson" enctype="multipart/form-data" method="POST" action="/rutaParaSubirJson">
+            <div class="form-group">
+                <label for="nombre" class="">Nombre:</label>
+                <input type="text" class="form-control p-3 py-4" id="nombre" name="nombre"
+                       placeholder="Ingresa un nombre" required>
             </div>
-        </div>
-        <button type="button" onclick="confirmarSubidaJson()" class="btn btn-success">Subir y
-            procesar
-        </button>
-    </form>
-
-    <h1 class="my-4">Ver todas las colecciones</h1>
-    <div class="list-group">
-        <div class="list-group-item d-flex justify-content-between align-items-center">
-            <span class="flex-grow-1 mr-2"><%=   %></span>
-
-            <!-- Ir a ver Json completo -->
-            <div class="btn-group">
-                <a href="/viewJson/<%=    %>" class="btn btn-primary btn-sm mx-2">Ver
-                    JSON</a>
-
-                <!-- Añadir modificador temporal -->
-                <form id="formAgregarIdentificador-<%=    %>"
-                      onsubmit="event.preventDefault(); confirmarUpdate('<%=    %>'); return false;">
-                    <input type="hidden" name="id" value=" %>">
-                    <button type="submit" class="btn btn-secondary btn-sm mx-2">Agregar
-                        Identificador
-                    </button>
-                </form>
-
-                <!-- Eliminar Json -->
-                <form id="formEliminar-<%=    %>" action="/deleteJson" method="post">
-                    <input type="hidden" name="id" value="<%=    %>">
-                    <button type="button" onclick="confirmarEliminacion('<%=    %>')"
-                            class="btn btn-danger btn-sm">Eliminar Json
-                    </button>
-                </form>
-
+            <div class="form-group">
+                <label for="descripcion" class="">Descripción:</label>
+                <textarea class="form-control" id="descripcion" name="descripcion" rows="3" placeholder="Escribe una descripción" required></textarea>
             </div>
-        </div>
+            <div class="form-group">
+                <label for="archivoJson" class="btn verde">Seleccionar archivo JSON</label>
+                <input type="file" class="form-control-file d-none p2" id="archivoJson"
+                       name="archivoJson" accept=".json" required>
+            </div>
+            <button type="submit" class="btn azul text-light p-2">Subir JSON</button>
+        </form>
     </div>
 </div>
 <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
 <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
-
-<!-- Eliminar Json -->
-<script>
-    function confirmarEliminacion(id) {
-        var respuesta = confirm("¿Estás seguro de que quieres eliminar este JSON?");
-        if (respuesta) {
-            fetch('/deleteJson', {
-                method: 'POST',
-                headers: {
-                    'Content-Type': 'application/json',
-                },
-                body: JSON.stringify({id: id})
-            })
-                .then(response => response.json())
-                .then(data => {
-                    alert(data.message);
-                    window.location.reload(true);
-
-                })
-                .catch((error) => {
-                    console.error('Error:', error);
-                });
-        }
-    }
-</script>
-
-<!-- Añadir modificador temporal -->
-<script>
-    function confirmarUpdate(id) {
-        var respuesta = confirm("¿Estás seguro de que quieres añadir un identificador temporal a " +
-            "este JSON?");
-        if (respuesta) {
-            fetch('/addTemporalIdentifierToValues', {
-                method: 'POST',
-                headers: {
-                    'Content-Type': 'application/json',
-                },
-                body: JSON.stringify({id: id})
-            })
-                .then(response => response.json())
-                .then(data => {
-                    alert(data.message);
-                    window.location.reload(true);
-
-                })
-                .catch((error) => {
-                    console.error('Error:', error);
-                });
-        }
-    }
-</script>
-
-<!-- Ir a ver Json completo -->
-<script>
-    function confirmarSubidaJson() {
-        var respuesta = confirm("¿Estás seguro de que quieres subir este archivo JSON?");
-        if (respuesta) {
-            var form = document.getElementById('formSubidaJson');
-            var formData = new FormData(form);
-
-            fetch('/uploadJson', {
-                method: 'POST',
-                body: formData
-            })
-                .then(response => response.json())
-                .then(data => {
-                    alert(data.message);
-                    window.location.reload();
-                })
-                .catch((error) => {
-                    console.error('Error:', error);
-                });
-        }
-    }
-</script>
-
-<!-- Ver documento que se esta subiendo -->
-<script>
-    document.querySelector('.custom-file-input').addEventListener('change', function (e) {
-        var fileName = document.getElementById("archivoJson").files[0].name;
-        var nextSibling = e.target.nextElementSibling;
-        nextSibling.innerText = fileName;
-    });
-</script>
-
 </body>
 </html>

@@ -21,6 +21,8 @@ app.use(bodyParser.urlencoded({     // to support URL-encoded bodies
 // Routes
 app.use(Jsonrouter);
 
+app.use(express.static('public'));
+
 //Iniciando el servidor, escuchando...
 app.listen(app.get('port'), async () => {
     await client.connect(); // Conecta a Cassandra antes de iniciar el servidor Express

@@ -1,8 +1,53 @@
+html, body {
+    width: 100%;
+    margin: 0;
+    padding: 0;
+}
+
+.mainBody{
+    height: 100%;
+}
+
 .pagina-main-fondo {
-    background-image: url("/images/fondo.jpg");
+    background-image: url("/img/fondo.jpg");
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
+}
+
+.fondoForm {
+    background-image: url("/img/fondoForm.jpg");
     background-size: cover;
     background-repeat: no-repeat;
     background-position: center;
     height: auto;
     padding: 10%;
+}
+
+.fondoFormInsertar {
+    background-color: rgba(32, 248, 255, 0.76);
+    padding: 10%;
+}
+
+
+.navbar-turquesa {
+    background-color: #029598;
+}
+
+.navbar-turquesa .navbar-brand,
+.navbar-turquesa .nav-link {
+    color: #FFFFFF;
+}
+
+
+.navbar-turquesa .nav-link:hover {
+    color: #f8f9fa;
+}
+
+.verde {
+    background-color: limegreen;
+}
+
+.azul {
+    background-color: #0078cd;
 }
