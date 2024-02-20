@@ -18,7 +18,7 @@ Jsonrouter.get('/insertarjson', function(req, res) {
 });
 
 
-Jsonrouter.get('/', async (req2, res) => {
+Jsonrouter.get('/222', async (req2, res) => {
     try {
         res.render('diseño', { title: 'Ver Colecciones'});
 
