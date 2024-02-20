@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title><%= title %></title>
+    <!-- Incluir Bootstrap CSS -->
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+          rel="stylesheet">
+</head>
+<link rel="stylesheet" type="text/css" href="/css/style.css">
+<body class="pagina-main-fondo ">
+<nav class="navbar navbar-expand-lg navbar-dark navbar-turquesa">
+    <a class="navbar-brand" href="#">Mi Sitio</a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav"
+            aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarNav">
+        <ul class="navbar-nav">
+            <li class="nav-item active">
+                <a class="nav-link" href="#">Inicio <span class="sr-only">(current)</span></a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="#">Enlace 2</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="#">Enlace 3</a>
+            </li>
+        </ul>
+    </div>
+</nav>
+<div class="container p-3 my-5">
+    <div class="container fondoFormInsertar p-5 my-5">
+        <h2>Subir Archivo JSON</h2>
+        <form id="formSubidaJson" enctype="multipart/form-data" method="POST" action="/rutaParaSubirJson">
+            <div class="form-group">
+                <label for="nombre" class="">Nombre:</label>
+                <input type="text" class="form-control p-3 py-4" id="nombre" name="nombre"
+                       placeholder="Ingresa un nombre" required>
+            </div>
+            <div class="form-group">
+                <label for="descripcion" class="">Descripción:</label>
+                <textarea class="form-control border-dark" id="descripcion" name="descripcion" rows="3"
+                          placeholder="Escribe una descripción" required></textarea>
+            </div>
+            <div class="form-group">
+                <label for="archivoJson" class="btn btn-primary">Cargar Archivo JSON</label>
+                <input type="file" class="form-control-file d-none" id="archivoJson" name="archivoJson" accept=".json" required>
+
+            </div>
+            <button type="submit" class="btn azul text-light p-2">Subir JSON</button>
+        </form>
+    </div>
+</div>
+<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+</body>
+</html>

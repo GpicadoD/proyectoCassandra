@@ -18,4 +18,22 @@ Jsonrouter.get('/insertarjson', function(req, res) {
 });
 
 
+Jsonrouter.get('/222', async (req2, res) => {
+    try {
+        res.render('diseño', { title: 'Ver Colecciones'});
+
+    } catch (error) {
+        res.status(500).render('error', { error: 'Error al recuperar documentos' });
+    }
+});
+
+Jsonrouter.get('/1', async (req2, res) => {
+    try {
+        res.render('diseñoFormulario.ejs', { title: 'Ver Colecciones'});
+
+    } catch (error) {
+        res.status(500).render('error', { error: 'Error al recuperar documentos' });
+    }
+});
+
 export default Jsonrouter;

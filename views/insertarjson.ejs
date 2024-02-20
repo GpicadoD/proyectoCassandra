@@ -4,43 +4,63 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Insertar JSON</title>
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.4.0/styles/default.min.css">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css"
+          rel="stylesheet"
+          integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN"
+          crossorigin="anonymous">
+    <link rel="stylesheet"
+          href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.4.0/styles/default.min.css">
+    <link rel="stylesheet" type="text/css" href="/css/style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@400..700&family=Pacifico&display=swap"
+          rel="stylesheet">
     <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.4.0/highlight.min.js"></script>
 </head>
-<body>
-    <div class="navbar navbar-expand-lg bg-dark " data-bs-theme="dark" th:fragment="header">
-        <div class="container-fluid blue">
-            <a class="navbar-brand d-lg-flex me-lg-5">Cassandra</a>
-            <div class="collapse navbar-collapse d-lg-flex mx-lg-5" id="navbarSupportedContent">
-                <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-                    <li class="nav-item">
-                        <a href="/" class="nav-link active">Todos JSON</a>
-                    </li>
-                    <li class="nav-item">
-                        <a href="/insertarjson" class="nav-link active">Insertar JSON</a>
-                    </li>
-                </ul>
-                <form class="d-flex me-3" role="search">
-                    <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
-                    <button class="btn btn-outline-success" type="submit">Search</button>
-                </form>
-            </div>
-        </div>
+<body class="pagina-main-fondo">
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark p-2">
+    <a class="navbar-brand" href="#">Mi Sitio</a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav"
+            aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarNav">
+        <ul class="navbar-nav">
+            <li class="nav-item active">
+                <a class="nav-link" href="/">Inicio </a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="/">Mis Json</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="/insertarjson">Insertar nuevos Json</a>
+            </li>
+        </ul>
     </div>
-    <h1>Crear Nuevo JSON</h1>
-    <form action="/crearjson" method="POST">
-        <label for="nombre">Nombre del archivo:</label>
-        <input type="text" id="nombre" name="nombre" required><br><br>
-        <label for="contenido">Contenido JSON:</label><br>
-        <textarea id="contenido" name="contenido" rows="10" cols="50" required></textarea><br><br>
-        <input type="submit" value="Crear JSON">
-    </form>
-    <h1>Insertar Archivo JSON</h1>
-    <form action="/archivojson" method="POST" enctype="multipart/form-data">
-        <label for="archivojson">Archivo JSON:</label><br>
-        <input type="file" id="archivojson" name="archivojson"><br><br>
-        <button type="submit">Guardar JSON</button>
-    </form>
+</nav>
+<div class="container p-3 my-5">
+    <div class="container fondoFormInsertar p-5 my-5" style="display: flex; flex-direction:
+    column; align-items: center; justify-content: center;width: 100%">
+        <h1>Crear Nuevo JSON</h1>
+        <form action="/crearjson" method="POST" class="w-75">
+            <label for="nombre">Nombre del archivo:</label>
+            <input type="text" id="nombre" name="nombre" required class="w-100 p-3 rounded"><br><br>
+            <label for="contenido">Contenido JSON:</label><br>
+            <textarea id="contenido" name="contenido" rows="10" class="w-100 rounded border-dark"
+                      required></textarea><br><br>
+            <input type="submit" value="Crear JSON" class="rojoSuave">
+        </form>
+        <form action="/archivojson" method="POST" enctype="multipart/form-data"
+              style="width: 75%; display: flex; flex-direction: column; align-items: center;"
+              class="colorJsonContainer my-4">
+            <h1 class="my-5">Insertar Archivo JSON</h1>
+            <label for="archivojson">Archivo JSON:</label><br>
+            <input type="file" accept=".json" id="archivojson" name="archivojson" class="rounded
+"><br><br>
+            <button type="submit" class="botonInsertarJson">Guardar JSON</button>
+        </form>
+    </div>
+</div>
+
 </body>
 </html>
