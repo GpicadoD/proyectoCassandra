@@ -43,10 +43,18 @@ async function obtenerTodosJson(req, res) {
     await conectarCassandra();
     let json = await obtenerTodoJson();
     if (!json) {
-        json = {rows: []};
+        json = { rows: [] };
     }
-    res.render('index', {json});
+    let contenido = json.rows.map(row => {
+        return {
+            nombre: row.nombre,
+            contenidoFormateado: JSON.parse(row.contenido)
+        };
+    });
+    
+    res.render('index', { json: contenido });
 }
+
 
 async function obtenerJsonPorNombre(req, res) {
     const {nombre} = req.body;
@@ -63,10 +71,15 @@ async function obtenerJsonPorNombre(req, res) {
 async function actualizarJsonPorNombre(req, res) {
     const {nombre} = req.params;
     const {contenido} = req.body;
-    await conectarCassandra();
-    await actualizarJson(nombre, contenido);
-    const mensaje = 'Archivo JSON actualizado correctamente.';
-    res.send(`<script>alert('${mensaje}'); window.location.href = '/';</script>`);
+    try{
+        await conectarCassandra();
+        verificarArchivoEsJsonValido(contenido);
+        await actualizarJson(nombre, contenido);
+        const mensaje = 'Archivo JSON actualizado correctamente.';
+        res.send(`<script>alert('${mensaje}'); window.location.href = '/';</script>`);
+    }catch(error){
+        return res.send(`<script>alert('${"El json no tiene un formato valido"}'); window.location.href = '/';</script>`);
+    }
 }
 
 async function eliminarJsonPorNombre(req, res) {

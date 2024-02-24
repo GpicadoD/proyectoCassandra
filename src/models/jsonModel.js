@@ -18,7 +18,8 @@ async function conectarCassandra() {
 async function insertarJson(nombre, contenido) {
     const query = 'INSERT INTO files (nombre, contenido) VALUES (?, ?)';
     try {
-        await client.execute(query, [nombre, contenido]);
+        const contenidoJson = JSON.parse(contenido);
+        await client.execute(query, [nombre, JSON.stringify(contenidoJson)]);
         console.log('Archivo JSON insertado correctamente.');
     } catch (error) {
         console.error('Error al insertar el archivo JSON:', error);
