@@ -2,7 +2,7 @@ html, body {
     width: 100%;
     margin: 0;
     padding: 0;
-    font-family: "Pacifico", cursive;
+    font-family: Georgia, serif;
     font-weight: 400;
     font-style: normal;
 }
@@ -16,7 +16,7 @@ html, body {
     background-size: cover;
     background-repeat: no-repeat;
     background-position: center;
-    font-family: "Pacifico", cursive;
+    font-family: Georgia, serif;
     font-weight: 400;
     font-style: normal;
 }
@@ -31,8 +31,8 @@ html, body {
 }
 
 .btn-custom {
-    padding: 10px 15px; /* Ajusta el padding para cambiar el tamaño */
-    font-size: 16px; /* Ajusta el tamaño del texto según sea necesario */
+    padding: 10px 15px;
+    font-size: 16px;
 }
 
 .fondoFormInsertar {
@@ -50,7 +50,7 @@ html, body {
 }
 
 button {
-    margin-top: 10px; /* Espaciado entre botones y textarea */
+    margin-top: 10px;
 }
 #botonEditar {
     background-color: #007bff;
@@ -87,9 +87,9 @@ button {
 
 .botones-container {
     display: flex;
-    flex-wrap: wrap; /* Permite que los elementos se envuelvan si no caben en una sola línea */
-    gap: 10px; /* Espacio entre los botones */
-    margin-top: 10px; /* Espaciado adicional desde el textarea */
+    flex-wrap: wrap;
+    gap: 10px;
+    margin-top: 10px;
 }
 
 /* Botón Actualizar */
@@ -128,15 +128,15 @@ textarea {
     border: 1px solid #ccc;
     border-radius: 4px;
     box-shadow: inset 0 1px 3px rgba(0,0,0,0.1);
-    padding: 10px; /* Más cómodo para leer */
+    padding: 10px;
 }
 
 input[type="text"].rounded, textarea.rounded {
-    border-radius: 0.25rem; /* Ajusta este valor según necesites para los bordes redondeados */
-    border: 2px solid #000; /* Especifica un borde más oscuro y grueso */
+    border-radius: 0.25rem;
+    border: 2px solid #000;
 }
 .border-dark {
-    border-color: #000 !important; /* Sobrescribe cualquier otro estilo para garantizar el color oscuro */
+    border-color: #000 !important;
 }
 
 .verde {
@@ -166,15 +166,15 @@ input[type="text"].rounded, textarea.rounded {
     padding: 0.5rem 1rem;
     margin-bottom: 0.5rem;
     margin-top: 0.5rem;
-    font-size: 1rem; /* Tamaño de letra similar a los inputs */
-    line-height: 1.5; /* Altura de línea para alinear con los inputs */
-    color: #495057; /* Color del texto similar a los inputs */
-    background-color: #ffffff; /* Fondo blanco */
-    border: 1px solid #ced4da; /* Borde similar a los inputs */
-    border-radius: 0.25rem; /* Bordes redondeados */
-    text-align: left; /* Alineación del texto */
-    cursor: pointer; /* Cambia el cursor a una mano para indicar que es clickable */
+    font-size: 1rem;
+    line-height: 1.5;
+    color: #495057;
+    background-color: #ffffff;
+    border: 1px solid #ced4da;
+    border-radius: 0.25rem;
+    text-align: left;
+    cursor: pointer;
 }
 .custom-file-upload:hover {
-    background-color: #f8f9fa; /* Cambio de color de fondo al pasar el mouse */
+    background-color: #f8f9fa;
 }
