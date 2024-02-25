@@ -18,9 +18,11 @@ async function conectarCassandra() {
 async function insertarJson(nombre, contenido) {
     const query = 'INSERT INTO files (nombre, contenido) VALUES (?, ?)';
     try {
+        const comprobacion = await obtenerJson(nombre);
+        if (comprobacion != null) return "Archivo ya existente";
         const contenidoJson = JSON.parse(contenido);
         await client.execute(query, [nombre, JSON.stringify(contenidoJson)]);
-        return'Archivo JSON insertado correctamente.';
+        return 'Archivo JSON insertado correctamente.';
     } catch (error) {
         return 'Error al insertar el archivo JSON:';
     }
@@ -28,9 +30,12 @@ async function insertarJson(nombre, contenido) {
 
 async function insertarArchivo(nombre, contenido) {
     try {
+        const comprobacion = await obtenerJson(nombre);
+        console.log(comprobacion);
+        if (comprobacion != null) return "Archivo ya existente";
         const query = 'INSERT INTO files (nombre, contenido) VALUES (?, ?)';
         await client.execute(query, [nombre, contenido]);
-        console.log('Archivo JSON insertado correctamente.');
+        return 'Archivo JSON insertado correctamente.';
     } catch (error) {
         console.error('Error al insertar el archivo JSON:', error);
     }

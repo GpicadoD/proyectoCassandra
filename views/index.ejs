@@ -65,7 +65,7 @@
                     <textarea id="jsonContenido<%= index %>" rows="10" style="width: 100%;" readonly><%= JSON.stringify(item.contenidoFormateado, null, 4) %></textarea>
                     <div class="botones-container">
                         <button name="botonEditar" id="botonEditar<%= index %>" onclick="edicion(<%= index %>)" class="editar">Editar</button>
-                        <button name="botonCancelar" id="botonCancelar<%= index %>" onclick="edicion(<%= index %>)" style="display: none;" class="cancelar">Cancelar</button>
+                        <button name="botonCancelar" id="botonCancelar<%= index %>" onclick="redireccionarPagina()" style="display: none;" class="cancelar">Cancelar</button>
                         <!-- <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal" data-contenido='<%= JSON.stringify(item, null, 4) %>'>Open modal</button> -->
                         <form name="actualizarForm<%= index %>" id="actualizarForm<%= index %>"
                             action="/actualizarjson/<%= item.nombre %>" method="POST" style="display: none;"
@@ -114,6 +114,9 @@
             modalBodyCode.textContent = contenidoJSON;
         });
     });
+    function redireccionarPagina() {
+        window.location.href = "/";
+    }
 </script>
 
 </html>

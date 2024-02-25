@@ -12,7 +12,8 @@ import {
 async function crearJson(req, res) {
     const {nombre, contenido} = req.body;
     await conectarCassandra();
-    const mensaje = await insertarJson(nombre, contenido);
+    await insertarJson(nombre, contenido);
+    const mensaje = 'Archivo JSON creado correctamente.';
     res.send(`<script>alert('${mensaje}'); window.location.href = '/';</script>`);
 }
 
@@ -29,10 +30,11 @@ async function insertarArchivoJson(req, res) {
         return res.send(`<script>alert('${"El json no tiene un formato valido"}'); window.location.href = '/insertarJson';</script>`);
     }
     await conectarCassandra();
-    await insertarArchivo(nombre, contenido);
-    const mensaje = 'Archivo JSON creado correctamente.';
+    const mensaje = await insertarArchivo(nombre, contenido);
     return res.send(`<script>alert('${mensaje}'); window.location.href = '/';</script>`);
 }
+
+
 
 function verificarArchivoEsJsonValido(contenido) {
     const objeto = JSON.parse(contenido);
