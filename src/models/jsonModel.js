@@ -20,9 +20,9 @@ async function insertarJson(nombre, contenido) {
     try {
         const contenidoJson = JSON.parse(contenido);
         await client.execute(query, [nombre, JSON.stringify(contenidoJson)]);
-        console.log('Archivo JSON insertado correctamente.');
+        return'Archivo JSON insertado correctamente.';
     } catch (error) {
-        console.error('Error al insertar el archivo JSON:', error);
+        return 'Error al insertar el archivo JSON:';
     }
 }
 
