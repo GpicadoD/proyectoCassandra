@@ -13,8 +13,7 @@ import {
 async function crearJson(req, res) {
     const { nombre, contenido } = req.body; 
     await conectarCassandra(); 
-    await insertarJson(nombre, contenido); 
-    const mensaje = 'Archivo JSON creado correctamente.'; 
+    const mensaje = await insertarJson(nombre, contenido); 
     res.send(`<script>alert('${mensaje}'); window.location.href = '/';</script>`); 
 }
 
